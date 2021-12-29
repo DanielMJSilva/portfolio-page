@@ -11,6 +11,7 @@ import { ContactMeComponent } from './contact-me/contact-me.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 
 import { RouterModule, Routes } from '@angular/router';
+import { APP_BASE_HREF, HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 const routes: Routes = [
    // basic routes
@@ -35,7 +36,10 @@ const routes: Routes = [
     NgbModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: APP_BASE_HREF, useValue: '/' } 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
