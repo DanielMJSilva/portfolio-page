@@ -10,6 +10,12 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { ContactMeComponent } from './contact-me/contact-me.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 
+// import brads and solid font-awesome icons
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+
+
 import { RouterModule, Routes } from '@angular/router';
 import { APP_BASE_HREF, HashLocationStrategy, LocationStrategy } from '@angular/common';
 
@@ -35,11 +41,19 @@ const routes: Routes = [
     AppRoutingModule,
     NgbModule,
     RouterModule.forRoot(routes),
+    FontAwesomeModule
   ],
   providers: [
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: LocationStrategy, useClass: HashLocationStrategy }, // # path
     { provide: APP_BASE_HREF, useValue: '/' } 
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  // add library for multiples usage of font-awesome
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fab, fas);
+  }
+ 
+ }

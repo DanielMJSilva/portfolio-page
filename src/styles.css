@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+.title {
+    padding: auto;
+    margin: 170px 30px 30px 30px;
+
+}
+.circular--square { 
+    border-radius: 50%;
+    width: 170px;
+    height: 170PX;
+}
+
+.centertext {
+    text-align: center
+}
+IMG.centralized {
+    display: block;
+    margin-left: auto;
+    margin-right: auto }
