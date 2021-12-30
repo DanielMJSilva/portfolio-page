@@ -11,6 +11,7 @@ import { faGithub } from '@FortAwesome/free-brands-svg-icons';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
+  backgroundIMG : string = "../assets/images/Toronto-image/toronto01.jpg"
 
   linkedin = faLinkedin;
   envelope = faEnvelope;
