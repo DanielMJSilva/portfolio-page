@@ -30,6 +30,7 @@
     </form>
 </div>
 <div class="container ui grid posts">
+    <app-project *ngFor="let project of sortedProjects()"
     [project]="project">
     </app-project>
 </div>
