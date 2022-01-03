@@ -4,7 +4,7 @@ body html {
 }
 
 .backdroundimg {
-    background-image: url('src/assets/images/Toronto-image/toronto02.jpg');
+    background-image: url('../../assets/images/Toronto-image/toronto02.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
