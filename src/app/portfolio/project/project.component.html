@@ -13,6 +13,7 @@
     <a class="ui large header" href="{{ project.link }}">
         {{ project.title }}
     </a>
+    <div class="meta">({{ project.domain() }})</div>
     <ul class="ui big horizontal list voters">
         <li class="item">
             <a href (click)="voteUp()">
