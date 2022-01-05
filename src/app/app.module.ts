@@ -19,6 +19,8 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { RouterModule, Routes } from '@angular/router';
 import { APP_BASE_HREF, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ProjectComponent } from './portfolio/project/project.component';
+import { SurveyComponent } from './survey-page/survey/survey.component';
+import { SurveyPageComponent } from './survey-page/survey-page.component';
 
 
 const routes: Routes = [
@@ -37,7 +39,9 @@ const routes: Routes = [
     WelcomeComponent,
     ContactMeComponent,
     PortfolioComponent,
-    ProjectComponent
+    ProjectComponent,
+    SurveyComponent,
+    SurveyPageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Project } from './project/project.model';
 
+
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
@@ -13,7 +14,7 @@ export class PortfolioComponent {
 
 
   constructor () {
-    this.projects=[];
+    this.projects=[new Project("Webpage_portfolio", "../assets/images/daniel.jpeg", "I create a portfolio webpage using Angular. \n I used many different features", "https://www.youtube.com/watch?v=ZDcMe-uMAXI", "Jan/2022", 5)];
   }
 
 
