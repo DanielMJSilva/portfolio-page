@@ -28,7 +28,7 @@ export class PortfolioComponent {
     date.value = "";
     return false;
   }
-
+// sort Projects by number of votes
   sortedProjects(): Project[] {
     return this.projects.sort((a: Project, b: Project) => b.votes - a.votes);
     }
