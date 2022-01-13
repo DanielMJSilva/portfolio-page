@@ -15,9 +15,6 @@ import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontaweso
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 
-
-import { RouterModule, Routes } from '@angular/router';
-import { APP_BASE_HREF, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ProjectComponent } from './portfolio/project/project.component';
 import { SurveyComponent } from './survey-page/survey/survey.component';
 import { SurveyPageComponent } from './survey-page/survey-page.component';
@@ -25,15 +22,7 @@ import { MySurveyComponent } from './survey-page/my-survey/my-survey.component';
 import { QuestionsComponent } from './survey-page/survey/questions/questions.component';
 
 
-const routes: Routes = [
-   // basic routes
-   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-   { path: 'welcome', component: WelcomeComponent },
-   { path: 'contactme', component: ContactMeComponent},
-   { path: 'portfolio', component: PortfolioComponent},
-   { path: 'portfolio/survey-page', component: SurveyPageComponent},
-   { path: 'portfolio/survey-page/mysurvey', component: MySurveyComponent},
-]
+
 
 @NgModule({
   declarations: [
@@ -53,12 +42,7 @@ const routes: Routes = [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    RouterModule.forRoot(routes),
     FontAwesomeModule
-  ],
-  providers: [
-    { provide: LocationStrategy, useClass: HashLocationStrategy }, // # path
-    { provide: APP_BASE_HREF, useValue: '/' } 
   ],
   bootstrap: [AppComponent]
 })

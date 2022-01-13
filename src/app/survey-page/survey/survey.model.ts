@@ -1,5 +1,5 @@
 export class Survey {
-    id!: number;
+    id!: string;
     title!: string;
     description!: string;
     createDate!: Date;
@@ -9,7 +9,7 @@ export class Survey {
     imageURL!: string;
     questions!: any;
     
-    constructor(id: number, title: string, description: string, startDate: Date, endDate: Date, imageURL: string, questions: any){
+    constructor(id: string, title: string, description: string, startDate: Date, endDate: Date, imageURL: string, questions: any){
         this.id = id;
         this.title = title;
         this.description = description;
@@ -22,4 +22,3 @@ export class Survey {
     }
 
 }
-

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Question } from '../survey/questions/question.model';
 
 @Component({
   selector: 'app-my-survey',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-survey.component.css']
 })
 export class MySurveyComponent implements OnInit {
+questions! : Question[];
 
   constructor() { }
 
