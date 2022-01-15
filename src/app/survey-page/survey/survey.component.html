@@ -1,16 +1,31 @@
 <!-- NEW FORM -->
-<form>
-    <label for="validationCustom01" class="form-label">Title:</label>
-    <input type="text" class="form-control" id="validationCustom01" value="" required #newtitle>
-    <label for="validationCustom02" class="form-label">Description:</label>
-    <textarea type="text" class="form-control" id="validationCustom01" rows="3" required #newdescription></textarea>
+<form #surveyForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+
+    {{ surveyForm.value | json}}
+    <hr/>
+    {{surveyModel | json}}
+
+    <div class="form-group">
+        <label for="validationCustom01" class="form-label">Title:</label>
+        <input type="text" class="form-control" id="validationCustom01" value="" name="title" #title="ngModel" 
+        [class.is-invalid]="title.invalid && title.touched" required [(ngModel)]="surveyModel.title">
+        <!-- <small class="text-danger" [class.d-none]="title.valid || title.untouched">Title is required</small> -->
+        <div *ngIf="title.errors && (title.invalid || title.touched)"> <!--multiple validation rules-->
+            <small class="text-danger" *ngIf="title.errors['required']">Title is required</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="validationCustom02" class="form-label">Description:</label>
+        <textarea type="text" class="form-control" id="validationCustom01" rows="3"  name="description" required  [(ngModel)]="surveyModel.description" #newdescription></textarea>
+    </div>
+   
     <hr/>
     <!-- Data Picker-->
     <div class="row">
         <div class="col-2"><label for="validationCustom01" class="form-label">Start Date: </label></div>
         <div class="col" style="left: 50px;"><label for="validationCustom01" class="form-label">End Date: </label></div>
     </div>
-    <form class="form-inline">
+    <div class="form-inline">
         <div class="form-group hidden">
           <div class="input-group">
             <input name="datepicker"
@@ -44,7 +59,8 @@
                    class="form-control" placeholder="yyyy-mm-dd"
                    name="dpFromDate"
                    [value]="formatter.format(fromDate)"
-                   (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
+                   (input)="fromDate = validateInput(fromDate, dpFromDate.value)"
+                   [(ngModel)]="surveyModel.startDate">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"></button>
             </div>
@@ -56,13 +72,14 @@
                    class="form-control" placeholder="yyyy-mm-dd"
                    name="dpToDate"
                    [value]="formatter.format(toDate)"
-                   (input)="toDate = validateInput(toDate, dpToDate.value)">
+                   (input)="toDate = validateInput(toDate, dpToDate.value)"
+                   [(ngModel)]="surveyModel.endDate">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"></button>
             </div>
           </div>
         </div>
-      </form>
+    </div>
       <!-- Add date JSON format view
       <hr/>
       <pre>From date model: {{ fromDate | json }}</pre>
@@ -71,15 +88,28 @@
        <!-- END Data Picker-->
       <br>
       <!-- Select THUMBNAIL needs improvement-->
-       <form action="/action_page.php">
+       <div action="/action_page.php">
        <label for="myfile">Select thumbnail:</label>
-       <input type="text" class="form-control" id="myfile" name="myfile" value="" required #new???>
-       <input type="file" id="myfile" name="myfile"><br><br>
-       </form>
+       <input type="text" class="form-control" id="myfile" name="myfile" value="" required  #new???>
+       <input type="file" id="myfile" name="myfile" [(ngModel)]="surveyModel.imageURL"><br><br>
+       </div>
        <!-- Activated button-->
        <div class="form-check mb-3">
         <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" name="activate"> Activate Survey
+          <input class="form-check-input" type="checkbox" name="activate" [(ngModel)]="surveyModel.activated"> Activate Survey
         </label>
       </div>
+
+      <div ngModelGroup="questions">
+          <div class="form-group">
+              <label for=""></label>
+              <input type="text" name="question" [(ngModel)]="surveyModel.questions">
+          </div>
+          <div class="form-group">
+            <label for=""></label>
+            <input type="text" name="isCorrect" ngModel>
+        </div>
+      </div>
+
+      <button [disabled]="surveyForm.form.invalid" class="btn btn-primary" type="submit">Create Survey</button>
 </form>

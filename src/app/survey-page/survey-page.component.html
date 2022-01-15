@@ -30,10 +30,36 @@
 
   <!-- END Navbar-->
 
-
+<!-- Jumbotron -->
     <div class="mr-2 p-5 bg-primary text-white">
         <h1>Survey application</h1>
         <p>You can create oyur own survey and respond others.</p>
     </div>
+
+<!-- List of surveys -->
+
+<div class="container-fluid px-4 py-5" id="hanging-icons">
+    <h2 class="pb-2 border-bottom">List of Surveys</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3" *ngFor="let survey of surveys">
+        <div class="col d-flex align-items-start">
+            <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+            <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"></use></svg>
+            </div>
+            <div class="col-md-8">
+                <h2>{{ survey.title }}</h2>
+                <p>{{ survey.description }}</p>
+            </div>
+            <div class="col-md-2">
+                <p>End date: {{ survey.endDate.getDay() }}/{{survey.endDate.getMonth()}}/{{survey.endDate.getFullYear()}} at: {{ survey.endDate.getHours() }}:{{survey.endDate.getMinutes()}}</p>
+                <a href="#" class="btn btn-primary">
+                    Respond
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
       

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Question } from '../survey/questions/question.model';
+import { Survey } from '../survey/survey.model';
+import { fakeSurveyList } from '../../fake-data';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-my-survey',
@@ -7,11 +10,20 @@ import { Question } from '../survey/questions/question.model';
   styleUrls: ['./my-survey.component.css']
 })
 export class MySurveyComponent implements OnInit {
-questions! : Question[];
+  surveys: Survey[] = [];
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    // gets the is from url (ActivatedRoute)
+    const id = this.route.snapshot.paramMap.get('id') as string;
+    this.surveys = fakeSurveyList;
+  }
+
+  onDeleteClicked(surveyId: string): void {
+    alert(`Delete survey with id: ${surveyId}`)
   }
 
 }

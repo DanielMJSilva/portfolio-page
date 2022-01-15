@@ -6,6 +6,7 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { MySurveyComponent } from './survey-page/my-survey/my-survey.component';
 import { SurveyPageComponent } from './survey-page/survey-page.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { EditSurveyComponent } from './survey-page/edit-survey/edit-survey.component';
 
 const routes: Routes = [
   // basic routes
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'contactme', component: ContactMeComponent},
   { path: 'portfolio', component: PortfolioComponent},
   { path: 'portfolio/survey-page', component: SurveyPageComponent},
-  { path: 'portfolio/survey-page/mysurvey/:id', component: MySurveyComponent},
+  { path: 'portfolio/survey-page/mysurvey', component: MySurveyComponent},
+  { path: 'portfolio/survey-page/edit-survey/:id', component: EditSurveyComponent},
 ]
 
 @NgModule({

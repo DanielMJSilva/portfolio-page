@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +22,8 @@ import { SurveyComponent } from './survey-page/survey/survey.component';
 import { SurveyPageComponent } from './survey-page/survey-page.component';
 import { MySurveyComponent } from './survey-page/my-survey/my-survey.component';
 import { QuestionsComponent } from './survey-page/survey/questions/questions.component';
+import { EditSurveyComponent } from './survey-page/edit-survey/edit-survey.component';
+
 
 
 
@@ -36,13 +40,17 @@ import { QuestionsComponent } from './survey-page/survey/questions/questions.com
     SurveyComponent,
     SurveyPageComponent,
     MySurveyComponent,
-    QuestionsComponent
+    QuestionsComponent,
+    EditSurveyComponent,
+ 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule,
+    HttpClientModule
   ],
   bootstrap: [AppComponent]
 })

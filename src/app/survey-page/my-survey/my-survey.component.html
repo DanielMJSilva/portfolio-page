@@ -1,10 +1,29 @@
-<div class="container">
-    <p>my-survey works!</p>
-    <app-survey></app-survey>
-   <!--<div class="container ui grid posts">
-        <app-questions *ngFor="let question of questions"
-        [question]="question">
-        </app-questions>
-    </div>--> 
+<!-- List of surveys -->
+<app-survey></app-survey>
+<div class="container-fluid px-4 py-5" id="hanging-icons">
+    <h2 class="pb-2 border-bottom">List of Surveys</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3" *ngFor="let survey of surveys">
+        <div class="col d-flex align-items-start">
+            <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+            <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"></use></svg>
+            </div>
+            <div class="col-md-7">
+                <h2>{{ survey.title }}</h2>
+                <p>{{ survey.description }}</p>
+            </div>
+            <div class="col-md-5">
+                <p>Start date: {{ survey.startDate.getDay() }}/{{survey.startDate.getMonth()}}/{{survey.startDate.getFullYear()}} at: {{ survey.startDate.getHours() }}:{{survey.startDate.getMinutes()}}</p>
+                <p>End date: {{ survey.endDate.getDay() }}/{{survey.endDate.getMonth()}}/{{survey.endDate.getFullYear()}} at: {{ survey.endDate.getHours() }}:{{survey.endDate.getMinutes()}}</p>
+                <a routerLink="portfolio/survey-page/edit-survey/{{survey.id}}" >
+                    <button class="btn btn-primary mr-2">
+                        Edit
+                    </button>
+                </a>
+                <button class="btn btn-danger" (onClick)="onDeleteClicked(survey.id)">
+                    Delete
+                </button>
+            </div>
+            <h5>Survey activated: {{survey.activated}}</h5>
+        </div>
+    </div>
 </div>
-

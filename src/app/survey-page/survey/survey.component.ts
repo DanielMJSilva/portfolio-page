@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbCalendar, NgbDate, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { Survey } from './survey.model';
+import { SurveyService } from '../survey.service';
+
 
 @Component({
   selector: 'app-survey',
@@ -12,7 +15,13 @@ export class SurveyComponent implements OnInit {
   fromDate: NgbDate | null = null;
   toDate: NgbDate | null = null;
 
-  constructor(private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
+ surveyModel = new Survey('100','Title1', 'Description', new Date(2022-11-11),  new Date(2022-12-15), '', false )
+
+  constructor(private calendar: NgbCalendar,
+    public formatter: NgbDateParserFormatter,
+    private _surveyService: SurveyService
+  
+    ) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
   }
@@ -48,6 +57,13 @@ export class SurveyComponent implements OnInit {
     return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
   }
 
+  onSubmit() {
+    this._surveyService.createSurvey(this.surveyModel)
+      .subscribe(
+        data => console.log('Success!', data),
+        error => console.log('Error!', error)
+      )
+  }
   // createSurvey(title: HTMLInputElement, description: HTMLTextAreaElement, youtube: HTMLInputElement, date: HTMLInputElement): boolean {
   //   console.log(`Adding project title: ${title.value}, link: ${link.value}, description: ${description.value}, youtube: ${youtube.value}, date: ${date.value}`);
   //   this.projects.push(new Project(title.value, link.value, description.value, youtube.value, date.value, 0));
